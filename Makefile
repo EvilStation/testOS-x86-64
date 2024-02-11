@@ -15,7 +15,9 @@ qemu:
 	GTK_PATH= qemu-system-x86_64 -cdrom $(ISO)
 
 qemu_dbg:
+	GTK_PATH= gnome-terminal -e "gdb -q -x gdbinit"
 	GTK_PATH= qemu-system-x86_64 -s -S -cdrom $(ISO) -curses
+	
 
 clean:
 	rm -fr $(PREFIX)/*
