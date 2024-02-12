@@ -7,10 +7,10 @@ SRC := $(wildcard **/*.c) $(wildcard **/*.asm)
 OBJ := $(patsubst %, %.o, $(basename $(SRC)))
 
 CFLAGS := -Wall -Wextra -pedantic -ffreestanding
-CFLAGS += -ggdb -O0
+CFLAGS += -ggdb -O0 -mcmodel=large
 CPPFLAGS := -I include
-LDFLAGS := -n -nostdlib -lgcc -T Link.ld
-ASFLAGS := -f elf64 -i include -g
+LDFLAGS := -n -nostdlib -lgcc -T Link.ld 
+ASFLAGS := -g -F dwarf -f elf64 -i include/asm
 
 ISOTDIR ?= ../../build/ISO
 

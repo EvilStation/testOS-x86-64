@@ -1,8 +1,6 @@
-%define GDT_CODE      (3<<11)
-%define GDT_PRESENT   (1<<15)
-%define GDT_LONG      (1<<21)
+%include "GDT.h"
 
-section .rodata
+section .bootGDT
 global BootGDTp
 
 BootGDT:
