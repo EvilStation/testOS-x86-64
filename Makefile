@@ -1,4 +1,4 @@
-.PHONY: kernel iso qemu qemu_dbg all clean
+.PHONY: tests kernel iso qemu qemu_dbg all clean
 
 PREFIX := build
 ISO = $(PREFIX)/testOS.iso
@@ -10,6 +10,10 @@ kernel:
 
 iso:
 	sh mkiso.sh
+
+tests:
+	$(MAKE) -C src/kernel install_t
+	$(PREFIX)/tests
 
 qemu:
 	GTK_PATH= qemu-system-x86_64 -cdrom $(ISO)
